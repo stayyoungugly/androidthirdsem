@@ -3,16 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/button_more_shape.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/button_shape.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_arrow_background.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/my_gradient.xml" value="0.176" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/font/fonts.xml" value="0.2" />
-        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/activity_main.xml" value="0.18524332810047095" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/button_more_shape.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/button_shape.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_arrow_background.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/message_shape.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/my_gradient.xml" value="0.1174342105263158" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/activity_message.xml" value="0.152" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/message_activity.xml" value="0.10723684210526316" />
       </map>
     </option>
   </component>

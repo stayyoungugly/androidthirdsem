@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/my_gradient">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="50dp"
-        tools:context=".MainActivity">
+        tools:context=".activities.MainActivity">
 
         <EditText
             android:id="@+id/et_name"
@@ -53,7 +54,7 @@
             android:contentDescription="@string/descrp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_more_vert_24"
+            app:srcCompat="@drawable/ic_baseline_share_24"
             app:tint="@color/white" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -93,7 +94,7 @@
             android:layout_marginTop="18dp"
             android:background="@drawable/button_shape"
             android:fontFamily="@font/circular_black"
-            android:minHeight="0dp"
+            android:minHeight="48dp"
             android:paddingLeft="30dp"
             android:paddingTop="5dp"
             android:paddingRight="30dp"
@@ -307,8 +308,8 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/button_more_shape"
             android:fontFamily="@font/circular_book"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:text="@string/more"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"

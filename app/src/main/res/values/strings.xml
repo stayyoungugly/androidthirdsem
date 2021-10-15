@@ -23,4 +23,6 @@
     <string name="descrp">Pic jpeg</string>
     <string name="playlists_small">Плейлисты</string>
     <string name="name_enter">Введите имя</string>
+    <string name="str_your_message">Ваше сообщение</string>
+    <string name="str_new_message">Новое сообщение</string>
 </resources>
