@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">AndroidSemThree</string>
+    <string name="nickname">i lda r ?</string>
+    <string name="edit_name">Изменить имя</string>
+    <string name="flwd_number">599</string>
+    <string name="flw_number">28</string>
+    <string name="pl_number">24</string>
+    <string name="playlists">ПЛЕЙЛИСТЫ</string>
+    <string name="followers">ПОДПИСЧИКИ</string>
+    <string name="followed">ПОДПИСКИ</string>
+    <string name="recently_played">Недавно прослушано</string>
+    <string name="kedr_livanskiy">Kedr Livanskiy</string>
+    <string name="kedr_sub">58 625 подписчиков</string>
+    <string name="dorn">Иван Дорн</string>
+    <string name="dorn_sub">457 680 подписчиков</string>
+    <string name="sh">ssshhhiiittt!</string>
+    <string name="sh_sub">475 754 подписчика</string>
+    <string name="more">Еще</string>
+    <string name="zero_sub">0 подписчиков</string>
+    <string name="rare">rare g</string>
+    <string name="gold">gold hey LISTEN</string>
+    <string name="twentyone">2021 tunes</string>
+    <string name="descrp">Pic jpeg</string>
+    <string name="playlists_small">Плейлисты</string>
+    <string name="name_enter">Введите имя</string>
+    <string name="str_your_message">Ваше сообщение</string>
+    <string name="str_new_message">Новое сообщение</string>
 </resources>

@@ -1,18 +1,451 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/my_gradient">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingBottom="50dp"
+        tools:context=".activities.MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/circular_bold"
+            android:inputType="text"
+            android:text="@string/nickname"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:typeface="normal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/edit_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:contentDescription="@string/descrp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/menu_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@null"
+            android:contentDescription="@string/descrp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_share_24"
+            app:tint="@color/white" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/profile1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="93dp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/circular_bold"
+            android:text="@string/nickname"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/circular_black"
+            android:minHeight="48dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="5dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="5dp"
+            android:text="@string/edit_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="@+id/tv_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_flwd_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/flwd_number"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_followed"
+            app:layout_constraintStart_toStartOf="@+id/tv_followed"
+            app:layout_constraintTop_toTopOf="@+id/tv_flw_number" />
+
+        <TextView
+            android:id="@+id/tv_flw_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/flw_number"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_followers"
+            app:layout_constraintStart_toStartOf="@+id/tv_followers"
+            app:layout_constraintTop_toTopOf="@+id/tv_pl_number" />
+
+        <TextView
+            android:id="@+id/tv_pl_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/pl_number"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_playlists"
+            app:layout_constraintStart_toStartOf="@+id/tv_playlists"
+            app:layout_constraintTop_toBottomOf="@+id/edit_button" />
+
+        <TextView
+            android:id="@+id/tv_playlists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/playlists"
+            android:textColor="@color/number_white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pl_number" />
+
+        <TextView
+            android:id="@+id/tv_followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/followers"
+            android:textColor="@color/number_white"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_followed"
+            app:layout_constraintStart_toEndOf="@+id/tv_playlists"
+            app:layout_constraintTop_toBottomOf="@+id/tv_flw_number" />
+
+        <TextView
+            android:id="@+id/tv_followed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/followed"
+            android:textColor="@color/number_white"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_flwd_number" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp" />
+
+        <TextView
+            android:id="@+id/tv_recently_played"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/circular_bold"
+            android:text="@string/recently_played"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_followers" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_kedr"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/kedr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_recently_played" />
+
+        <TextView
+            android:id="@+id/tv_name_kedr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/kedr_livanskiy"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_kedr"
+            app:layout_constraintTop_toTopOf="@+id/iv_kedr" />
+
+        <TextView
+            android:id="@+id/tv_kedr_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/kedr_sub"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_kedr"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_kedr" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_dorn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/dorn"
+            app:layout_constraintStart_toStartOf="@+id/iv_kedr"
+            app:layout_constraintTop_toBottomOf="@+id/iv_kedr" />
+
+        <TextView
+            android:id="@+id/tv_name_dorn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/dorn"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_dorn"
+            app:layout_constraintTop_toTopOf="@+id/iv_dorn" />
+
+        <TextView
+            android:id="@+id/tv_dorn_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/dorn_sub"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_dorn"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_dorn" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_sh"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/sh"
+            app:layout_constraintStart_toStartOf="@+id/iv_dorn"
+            app:layout_constraintTop_toBottomOf="@+id/iv_dorn" />
+
+        <TextView
+            android:id="@+id/tv_name_shh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/sh"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_sh"
+            app:layout_constraintTop_toTopOf="@+id/iv_sh" />
+
+        <TextView
+            android:id="@+id/tv_sh_sub"
+            android:layout_width="162dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/sh_sub"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_shh"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_shh" />
+
+        <Button
+            android:id="@+id/more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_more_shape"
+            android:fontFamily="@font/circular_book"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/more"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/iv_sh"
+            app:layout_constraintTop_toBottomOf="@+id/iv_sh" />
+
+        <TextView
+            android:id="@+id/tv_my_playlists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/circular_bold"
+            android:text="@string/playlists_small"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/more_button" />
+
+        <ImageView
+            android:id="@+id/iv_rare"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/descrp"
+            android:src="@drawable/rare"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_playlists" />
+
+        <TextView
+            android:id="@+id/tv_name_rare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/rare"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_rare"
+            app:layout_constraintTop_toTopOf="@+id/iv_rare" />
+
+        <TextView
+            android:id="@+id/tv_rare_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/zero_sub"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_rare"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_rare" />
+
+        <ImageView
+            android:id="@+id/iv_gold"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/descrp"
+            android:src="@drawable/gold"
+            app:layout_constraintStart_toStartOf="@+id/iv_rare"
+            app:layout_constraintTop_toBottomOf="@+id/iv_rare" />
+
+        <TextView
+            android:id="@+id/tv_name_gold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/gold"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_gold"
+            app:layout_constraintTop_toTopOf="@+id/iv_gold" />
+
+        <TextView
+            android:id="@+id/tv_gold_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/zero_sub"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_gold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_gold" />
+
+        <ImageView
+            android:id="@+id/iv_2021"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/descrp"
+            android:src="@drawable/twenone"
+            app:layout_constraintStart_toStartOf="@+id/iv_gold"
+            app:layout_constraintTop_toBottomOf="@+id/iv_gold" />
+
+        <TextView
+            android:id="@+id/tv_name_2021"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/twentyone"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_2021"
+            app:layout_constraintTop_toTopOf="@+id/iv_2021" />
+
+        <TextView
+            android:id="@+id/tv_2021_sub"
+            android:layout_width="162dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/circular_book"
+            android:text="@string/zero_sub"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_2021"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_2021" />
+
+        <Button
+            android:id="@+id/more_button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_more_shape"
+            android:fontFamily="@font/circular_book"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="@string/more"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/iv_2021"
+            app:layout_constraintTop_toBottomOf="@+id/iv_2021" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
