@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AndroidSemThree</string>
+    <string name="menu">Menu</string>
+    <string name="home">HOME</string>
+    <string name="favourites">FAVOURITES</string>
+    <string name="add">ADD</string>
+    <string name="image">Image</string>
 </resources>
