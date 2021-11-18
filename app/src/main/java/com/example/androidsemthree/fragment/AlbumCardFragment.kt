@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.androidsemthree.adapter.AlbumCardViewAdapter
 import com.example.androidsemthree.databinding.FragmentCardBinding
+import com.example.androidsemthree.decorator.ItemCardDecorator
 import com.example.androidsemthree.decorator.ItemDecorator
 import com.example.androidsemthree.rep.AlbumRepository
 
@@ -31,7 +32,7 @@ class AlbumCardFragment : Fragment() {
         albumCardViewAdapter = AlbumCardViewAdapter(AlbumRepository.getList(), Glide.with(this))
 
         val decorator = DividerItemDecoration(requireContext(), RecyclerView.VERTICAL)
-        val spacing = ItemDecorator(requireContext())
+        val spacing = ItemCardDecorator(requireContext())
 
         with(binding) {
             rvAlbums.run {

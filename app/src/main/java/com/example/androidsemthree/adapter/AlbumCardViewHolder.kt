@@ -1,6 +1,5 @@
 package com.example.androidsemthree.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,10 +7,8 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.androidsemthree.databinding.ItemAlbumBinding
 import com.example.androidsemthree.databinding.ItemCvAlbumBinding
 import com.example.androidsemthree.model.AlbumEntity
-import com.example.androidsemthree.rep.AlbumRepository
 
 class AlbumCardViewHolder(
     private val binding: ItemCvAlbumBinding,

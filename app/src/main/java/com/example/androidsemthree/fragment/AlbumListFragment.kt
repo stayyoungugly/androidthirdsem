@@ -1,6 +1,6 @@
 package com.example.androidsemthree.fragment
 
-import SwipeToDelete
+import com.example.androidsemthree.adapter.SwipeToDelete
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

@@ -6,9 +6,9 @@ import android.util.TypedValue
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemDecorator(
+class ItemCardDecorator(
     context: Context,
-    spacing: Float = 0f
+    spacing: Float = 16f
 ) : RecyclerView.ItemDecoration() {
 
     private val spacingPx: Int = TypedValue.applyDimension(

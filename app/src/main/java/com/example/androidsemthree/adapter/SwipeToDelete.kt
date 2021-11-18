@@ -1,3 +1,5 @@
+package com.example.androidsemthree.adapter
+
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
