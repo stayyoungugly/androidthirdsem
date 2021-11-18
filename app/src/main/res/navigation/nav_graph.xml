@@ -4,23 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.androidsemthree.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main">
-        <action
-            android:id="@+id/action_mainFragment_to_albumFragment"
-            app:destination="@id/albumFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_main" />
     <fragment
-        android:id="@+id/albumFragment"
-        android:name="com.example.androidsemthree.fragment.AlbumFragment"
-        android:label="AlbumFragment">
-        <argument
-            android:name="albumID"
-            android:defaultValue="0"
-            app:argType="integer" />
-    </fragment>
+        android:id="@+id/albumListFragment"
+        android:name="com.example.androidsemthree.fragment.AlbumListFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" />
+    <fragment
+        android:id="@+id/albumCardFragment"
+        android:name="com.example.androidsemthree.fragment.AlbumCardFragment"
+        android:label="fragment_cardview"
+        tools:layout="@layout/fragment_card" />
 </navigation>

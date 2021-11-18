@@ -1,5 +1,6 @@
 package com.example.androidsemthree.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,11 +10,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.androidsemthree.databinding.ItemAlbumBinding
 import com.example.androidsemthree.model.AlbumEntity
+import com.example.androidsemthree.rep.AlbumRepository
 
 class AlbumHolder(
     private val binding: ItemAlbumBinding,
     private val glide: RequestManager,
-    private val action: (Int) -> Unit
+    private val deleteAction: (Int?) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private var album: AlbumEntity? = null
@@ -25,30 +27,57 @@ class AlbumHolder(
     fun bind(item: AlbumEntity) {
         this.album = item
         with(binding) {
-            tvName.text = item.name
-            tvAuthor.text = item.author
-
+            tvTitle.text = item.title
+            tvDescription.text = item.description
             glide.load(item.url)
                 .apply(options)
                 .into(ivImage)
-
-            itemView.setOnClickListener {
-                action(item.id)
+            btnDelete.setOnClickListener {
+                deleteAction(AlbumRepository.getIndex(item))
             }
         }
     }
+
+    fun updateFields(bundle: Bundle) {
+        bundle.run {
+            getString("TITLE")?.also {
+                updateTitle(it)
+            }
+            getString("DESCRIPTION")?.also {
+                updateDescription(it)
+            }
+            getString("URL")?.also {
+                updateUrl(it)
+            }
+        }
+    }
+
+    private fun updateTitle(title: String) {
+        binding.tvTitle.text = title
+    }
+
+    private fun updateDescription(desc: String) {
+        binding.tvDescription.text = desc
+    }
+
+    private fun updateUrl(url: String) {
+        glide.load(url)
+            .apply(options)
+            .into(binding.ivImage)
+    }
+
 
     companion object {
         fun create(
             parent: ViewGroup,
             glide: RequestManager,
-            action: (Int) -> Unit
+            deleteAction: (Int?) -> Unit
         ) = AlbumHolder(
             ItemAlbumBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), glide, action
+            ), glide, deleteAction
         )
     }
 }

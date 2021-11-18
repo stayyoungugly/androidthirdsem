@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:orderInCategory="1"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/albumListFragment"
+        android:icon="@drawable/ic_baseline_list_24"
+        android:orderInCategory="2"
+        android:title="@string/list"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/albumCardFragment"
+        android:icon="@drawable/ic_baseline_card_membership_24"
+        android:orderInCategory="3"
+        android:title="@string/cardview"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -7,4 +7,10 @@
     <string name="author_tv">Author</string>
     <string name="name_tv">Name</string>
     <string name="image">image</string>
+    <string name="cardview">Cardview</string>
+    <string name="list">List</string>
+    <string name="home">Home</string>
+    <string name="title">Title</string>
+    <string name="rus_desc">Описание</string>
+    <string name="rus_pos">Позиция</string>
 </resources>
