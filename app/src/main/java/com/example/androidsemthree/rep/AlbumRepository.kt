@@ -13,8 +13,9 @@ object AlbumRepository {
             AlbumEntity(
                 id = auto_id++,
                 title = "College Dropout",
-                description = "Kanye West Debut Album",
+                description = "Kanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut AlbumKanye West Debut Album",
                 url = "https://centralsauce.com/wp-content/uploads/2018/05/cd2.jpg",
+                list =  listOf("https://static.wixstatic.com/media/d43eb5_708eb0a453ba4cc28ff3dc6e0f0973f5~mv2.jpg/v1/fill/w_320,h_385,q_90/d43eb5_708eb0a453ba4cc28ff3dc6e0f0973f5~mv2.jpg", "https://dkmk.ru/images/barnwoodenhouse.jpeg", "https://smartdom5.ru/img/19399376_1920_q70.jpg")
             ),
             AlbumEntity(
                 id = auto_id++,
@@ -49,7 +50,7 @@ object AlbumRepository {
         } else update(pos, title, description)
     }
 
-    fun update(pos: Int, title: String, description: String) {
+    private fun update(pos: Int, title: String, description: String) {
         albums.add(pos, AlbumEntity(auto_id++, title, description, auto_url))
     }
 
@@ -66,11 +67,11 @@ object AlbumRepository {
     }
 
     fun getList(): ArrayList<AlbumEntity> {
-        return albums;
+        return albums
     }
 
     fun getIndex(item: AlbumEntity): Int {
-        return albums.indexOf(item);
+        return albums.indexOf(item)
     }
 
 }

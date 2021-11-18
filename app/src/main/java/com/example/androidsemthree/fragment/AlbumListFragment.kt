@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.androidsemthree.adapter.AlbumListAdapter
-import com.example.androidsemthree.databinding.FragmentAlbumBinding
+import com.example.androidsemthree.databinding.FragmentListBinding
 import com.example.androidsemthree.decorator.ItemDecorator
 import com.example.androidsemthree.dialogs.AddDialog
 import com.example.androidsemthree.rep.AlbumRepository
 import com.google.android.material.snackbar.Snackbar
 
 class AlbumListFragment : Fragment() {
-    private lateinit var binding: FragmentAlbumBinding
+    private lateinit var binding: FragmentListBinding
     private lateinit var albumListAdapter: AlbumListAdapter
 
     override fun onCreateView(
@@ -26,7 +26,7 @@ class AlbumListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAlbumBinding.inflate(inflater, container, false)
+        binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,10 +44,8 @@ class AlbumListFragment : Fragment() {
 
         binding.rvAlbums.run {
             adapter = albumListAdapter
-
             addItemDecoration(spacing)
             addItemDecoration(decorator)
-
             swipeToDelete(this)
         }
         refresh()

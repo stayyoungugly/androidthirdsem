@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ItemDecorator(
     context: Context,
-    spacing: Float = 16f
+    spacing: Float = 0f
 ) : RecyclerView.ItemDecoration() {
 
     private val spacingPx: Int = TypedValue.applyDimension(

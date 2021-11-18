@@ -13,7 +13,7 @@
         android:id="@+id/albumListFragment"
         android:name="com.example.androidsemthree.fragment.AlbumListFragment"
         android:label="fragment_album"
-        tools:layout="@layout/fragment_album" />
+        tools:layout="@layout/fragment_list" />
     <fragment
         android:id="@+id/albumCardFragment"
         android:name="com.example.androidsemthree.fragment.AlbumCardFragment"
