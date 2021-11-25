@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AndroidSemThree</string>
+    <string name="hour">Hour</string>
+    <string name="minute">Minute</string>
+    <string name="enter_time">Enter Time</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="channel_title">Alarm for User</string>
+    <string name="channel_description">Alarm Service</string>
+    <string name="good_morning_vietnam">Good Morning, Vietnam</string>
+    <string name="current_alarm">Current Alarm</string>
 </resources>
