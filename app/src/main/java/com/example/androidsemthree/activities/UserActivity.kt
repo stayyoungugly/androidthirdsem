@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidsemthree.databinding.ActivityUserBinding
 
-class UserActivity: AppCompatActivity() {
+class UserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserBinding
 

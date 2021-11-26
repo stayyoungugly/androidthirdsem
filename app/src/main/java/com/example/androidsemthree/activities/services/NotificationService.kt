@@ -1,5 +1,6 @@
 package com.example.androidsemthree.activities.services
 
+import android.annotation.SuppressLint
 import android.app.Notification.*
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -16,8 +17,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationCompat.VISIBILITY_PUBLIC
 import com.example.androidsemthree.R
 import com.example.androidsemthree.activities.UserActivity
-import java.io.File
-
 
 class NotificationService(context: Context) {
     companion object {
@@ -32,34 +31,35 @@ class NotificationService(context: Context) {
 
     private val audio by lazy {
         AudioAttributes.Builder()
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                .build()
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+            .build()
     }
 
     private val pattern = arrayOf(100L, 200L, 0, 400L).toLongArray()
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun showNotification(context: Context, title: String) {
 
         val sound: Uri = context.getSoundUri(R.raw.song_alarm)
 
         val moveIntent = Intent(context, UserActivity::class.java).let {
             PendingIntent.getActivities(
-                    context,
-                    REQUEST_CODE_1,
-                    arrayOf(it),
-                    PendingIntent.FLAG_UPDATE_CURRENT
+                context,
+                REQUEST_CODE_1,
+                arrayOf(it),
+                PendingIntent.FLAG_UPDATE_CURRENT
             )
         }
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_baseline_access_alarm_24)
-                .setContentTitle("It is $title already")
-                .setShowWhen(true)
-                .setAutoCancel(true)
-                .setContentIntent(moveIntent)
-                .setContentText("Wake Up!")
-                .setCategory(CATEGORY_ALARM)
-                .setOngoing(true)
+            .setSmallIcon(R.drawable.ic_baseline_access_alarm_24)
+            .setContentTitle("It is $title already")
+            .setShowWhen(true)
+            .setAutoCancel(true)
+            .setContentIntent(moveIntent)
+            .setContentText("Wake Up!")
+            .setCategory(CATEGORY_ALARM)
+            .setOngoing(true)
 
         notificationChannelCreator(context, sound, builder)
 
@@ -71,15 +71,15 @@ class NotificationService(context: Context) {
     }
 
     private fun notificationChannelCreator(
-            context: Context,
-            sound: Uri,
-            builder: NotificationCompat.Builder
+        context: Context,
+        sound: Uri,
+        builder: NotificationCompat.Builder
     ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel(
-                    CHANNEL_ID,
-                    context.getString(R.string.channel_title),
-                    IMPORTANCE_HIGH
+                CHANNEL_ID,
+                context.getString(R.string.channel_title),
+                IMPORTANCE_HIGH
             ).apply {
                 description = context.getString(R.string.channel_description)
                 lightColor = Color.BLUE
@@ -102,7 +102,8 @@ class NotificationService(context: Context) {
     fun cancelNotification() {
         manager.cancelAll()
     }
+
     private fun Context.getSoundUri(
-            @RawRes id: Int
+        @RawRes id: Int
     ) = Uri.parse("android.resource://${packageName}/$id")
 }

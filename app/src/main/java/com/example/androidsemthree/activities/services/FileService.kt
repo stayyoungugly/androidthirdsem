@@ -15,17 +15,18 @@ class FileService(context: Context) {
         val path = context.filesDir
         val letDirectory = File(path, "FILES")
         letDirectory.mkdirs()
-        alarmFile = File(letDirectory,fileName)
+        alarmFile = File(letDirectory, fileName)
         return alarmFile
     }
 
     fun appendFile(context: Context, hour: String, minute: String) {
         if (!alarmFile.exists()) {
-            createFile(context,"alarm.txt")
+            createFile(context, "alarm.txt")
         }
         alarmFile.appendText(hour + "\n")
         alarmFile.appendText(minute)
     }
+
     fun clearFile() {
         alarmFile.delete()
     }

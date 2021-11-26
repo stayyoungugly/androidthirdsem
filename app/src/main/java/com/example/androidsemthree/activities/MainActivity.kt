@@ -1,10 +1,15 @@
 package com.example.androidsemthree.activities
 
+import android.content.ComponentName
+import android.content.Context
+import android.content.pm.PackageManager
 import com.example.androidsemthree.activities.services.FileService
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.example.androidsemthree.R
+import com.example.androidsemthree.activities.receivers.BootReceiver
 import com.example.androidsemthree.activities.services.AlarmManagerService
 import com.example.androidsemthree.activities.services.NotificationService
 import com.example.androidsemthree.databinding.ActivityMainBinding
@@ -21,40 +26,45 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).also {
             setContentView(it.root)
         }
+        enableBootReceiver(this)
 
         alarmManagerService = AlarmManagerService(this)
 
         fileService = FileService(this)
         var isStarted = false
-        //var file = fileService?.getFile()
-//        if (file?.exists() == true) {
-//            val time = file.readLines() as ArrayList<String>
-//            val hour = time[0]
-//            val minute = time[1]
-//            with(binding) {
-//                etHour.setText(hour)
-//                etMin.setText(minute)
-//                isStarted = afterStart()
-//            }
-//        }
+
+        var file = fileService?.getFile()
+
+        if (file?.exists() == true) {
+            val time = file.readLines() as ArrayList<String>
+            val hour = time[0]
+            val minute = time[1]
+            with(binding) {
+                isStarted = afterStart()
+                etHour.setText(hour)
+                etMin.setText(minute)
+            }
+        }
 
         with(binding) {
             notificationService = NotificationService(this@MainActivity)
             btStart.setOnClickListener {
-                hideKeyboard()
-                val hour = etHour.text.toString()
-                val minute = etMin.text.toString()
-                if (checkStart(hour, minute)) {
-                    // file = fileService?.createFile(this@MainActivity, "alarm.txt")
-                    // fileService?.appendFile(this@MainActivity, hour, minute)
-                    alarmManagerService?.setAlarm(this@MainActivity, hour, minute)
-                    isStarted = afterStart()
+                if (!isStarted) {
+                    hideKeyboard()
+                    val hour = etHour.text.toString()
+                    val minute = etMin.text.toString()
+                    if (checkStart(hour, minute)) {
+                        file = fileService?.createFile(this@MainActivity, "alarm.txt")
+                        fileService?.appendFile(this@MainActivity, hour, minute)
+                        alarmManagerService?.setAlarm(this@MainActivity, hour, minute)
+                        isStarted = afterStart()
+                    }
+                    showMessage(isStarted)
                 }
-                showMessage(isStarted)
             }
             btStop.setOnClickListener {
                 if (isStarted) {
-                    // fileService?.clearFile()
+                    fileService?.clearFile()
                     alarmManagerService?.cancelAlarm(this@MainActivity)
                     isStarted = afterStop()
                 }
@@ -62,8 +72,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun enableBootReceiver(context: Context) {
+        val receiver = ComponentName(context, BootReceiver::class.java)
+        context.packageManager.setComponentEnabledSetting(
+            receiver,
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            PackageManager.DONT_KILL_APP
+        )
+    }
+
     private fun ActivityMainBinding.afterStop(): Boolean {
-        btStart.isClickable = true
+        btStart.isEnabled = true
+        btStop.isEnabled = false
+        btStart.setBackgroundColor(resources.getColor(R.color.start_bt_color))
+        btStop.setBackgroundColor(resources.getColor(R.color.unselected_bt_color))
         etHour.isEnabled = true
         etMin.isEnabled = true
         tvEnter.text = getString(R.string.enter_time)
@@ -71,7 +93,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun ActivityMainBinding.afterStart(): Boolean {
-        btStart.isClickable = false
+        btStop.isEnabled = true
+        btStart.isEnabled = false
+        btStop.setBackgroundColor(resources.getColor(R.color.stop_bt_color))
+        btStart.setBackgroundColor(resources.getColor(R.color.unselected_bt_color))
         etHour.isEnabled = false
         etMin.isEnabled = false
         tvEnter.text = getString(R.string.current_alarm)
@@ -86,7 +111,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showMessage(flag: Boolean) {
-
         val message: String = if (flag) {
             "ALARM WAS SET"
         } else {
@@ -125,4 +149,5 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         alarmManagerService = null
     }
+
 }

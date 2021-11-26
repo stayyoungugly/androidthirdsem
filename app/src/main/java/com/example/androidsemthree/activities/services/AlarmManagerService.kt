@@ -1,5 +1,6 @@
 package com.example.androidsemthree.activities.services
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.ComponentName
@@ -33,6 +34,7 @@ class AlarmManagerService(context: Context) {
         )
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun setAlarm(context: Context, hour: String, minute: String) {
         intent = Intent(context, AlarmReceiver::class.java).let {
             it.putExtra("HOUR_STRING", hour)
@@ -74,7 +76,15 @@ class AlarmManagerService(context: Context) {
         }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun cancelAlarm(context: Context) {
+        intent = Intent(context, AlarmReceiver::class.java)
+        pendingIntent = PendingIntent.getBroadcast(
+            context,
+            REQUEST_CODE_1,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
         alarmManager.cancel(pendingIntent)
         service = NotificationService(context)
         service.cancelNotification()

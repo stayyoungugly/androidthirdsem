@@ -24,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hour"
-            android:textSize="24sp"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,8 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/minute"
-            android:textSize="24sp"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#41AE13"
+        android:backgroundTint="@color/start_bt_color"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ti_hour"
@@ -80,9 +80,10 @@
         android:id="@+id/bt_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#B12929"
+        android:backgroundTint="@color/unselected_bt_color"
+        android:clickable="false"
+        android:enabled="false"
         android:text="@string/stop"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/ti_min"

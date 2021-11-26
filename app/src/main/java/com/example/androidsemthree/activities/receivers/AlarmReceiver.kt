@@ -5,15 +5,16 @@ import android.content.Context
 import android.content.Intent
 import com.example.androidsemthree.activities.services.NotificationService
 
-class AlarmReceiver: BroadcastReceiver() {
-    private var service: NotificationService? = null
+class AlarmReceiver : BroadcastReceiver() {
+
+    private lateinit var notificationService: NotificationService
 
     override fun onReceive(context: Context, intent: Intent?) {
-            val hour = intent?.extras?.getString("HOUR_STRING")
-            val minute = intent?.extras?.getString("MINUTE_STRING")
-            service = NotificationService(context)
-            service?.showNotification(context, "$hour:$minute")
+        val hour = intent?.extras?.getString("HOUR_STRING")
+        val minute = intent?.extras?.getString("MINUTE_STRING")
 
+        notificationService = NotificationService(context)
+        notificationService.showNotification(context, "$hour:$minute")
     }
 }
 
