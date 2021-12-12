@@ -3,12 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/songListFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.androidsemthree.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/songListFragment"
+        android:name="com.example.androidsemthree.fragment.SongListFragment"
+        android:label="fragment_song_list"
+        tools:layout="@layout/fragment_song_list">
+        <action
+            android:id="@+id/action_songListFragment_to_songFragment"
+            app:destination="@id/songFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/songFragment"
+        android:name="com.example.androidsemthree.fragment.SongFragment"
+        android:label="SongFragment">
+    <argument
+        android:name="songID"
+        android:defaultValue="0"
+        app:argType="integer" />
+    </fragment>
 
 </navigation>
