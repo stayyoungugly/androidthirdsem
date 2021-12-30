@@ -8,14 +8,12 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.androidsemthree.R
-import com.example.androidsemthree.activities.MainActivity
 import com.example.androidsemthree.database.AppDatabase
 import com.example.androidsemthree.databinding.FragmentNoteDetailsBinding
 import com.example.androidsemthree.models.DateToString
@@ -156,7 +154,8 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
             note?.date?.let {
                 calendar = Calendar.getInstance()
                 calendar?.time = it
-                tvDate.text = "Дата: ${DateToString.convertDateToString(it)}"
+                tvDate.text =
+                    getString(R.string.data_text_rus) + DateToString.convertDateToString(it)
             }
         }
     }
@@ -180,7 +179,9 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
 
     private fun setDate(calendar: Calendar?) {
         binding?.apply {
-            tvDate.text = calendar?.time?.let { "Дата: ${DateToString.convertDateToString(it)}" }
+            tvDate.text = calendar?.time?.let {
+                getString(R.string.data_text_rus) + DateToString.convertDateToString(it)
+            }
         }
     }
 
