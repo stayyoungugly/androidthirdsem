@@ -11,4 +11,5 @@
     <string name="longitude">Долгота (необязательно)</string>
     <string name="latitude">Широта (необязательно)</string>
     <string name="date_is_not_picked_rus">Дата не выбрана</string>
+    <string name="date_rus_text">Дата:</string>
 </resources>

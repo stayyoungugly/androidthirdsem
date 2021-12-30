@@ -8,14 +8,12 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.androidsemthree.R
-import com.example.androidsemthree.activities.MainActivity
 import com.example.androidsemthree.database.AppDatabase
 import com.example.androidsemthree.databinding.FragmentNoteDetailsBinding
 import com.example.androidsemthree.models.DateToString
@@ -23,6 +21,10 @@ import com.example.androidsemthree.models.Note
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.util.*
 
 class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
@@ -31,6 +33,8 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
     private var client: FusedLocationProviderClient? = null
     private var calendar: Calendar? = null
     private var currentNoteId: Int? = null
+
+    private val scope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -149,14 +153,17 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
     }
 
     private fun setNoteEditingView(id: Int) {
-        val note = database?.noteDao()?.findById(id)
-        binding?.apply {
-            etTitle.setText(note?.title)
-            etDesc.setText(note?.description)
-            note?.date?.let {
-                calendar = Calendar.getInstance()
-                calendar?.time = it
-                tvDate.text = "Дата: ${DateToString.convertDateToString(it)}"
+        scope.launch {
+            val note = database?.noteDao()?.findById(id)
+            binding?.apply {
+                etTitle.setText(note?.title)
+                etDesc.setText(note?.description)
+                note?.date?.let {
+                    calendar = Calendar.getInstance()
+                    calendar?.time = it
+                    val str = DateToString.convertDateToString(it)
+                    tvDate.text = getString(R.string.date_rus_text) + str
+                }
             }
         }
     }
@@ -180,7 +187,9 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
 
     private fun setDate(calendar: Calendar?) {
         binding?.apply {
-            tvDate.text = calendar?.time?.let { "Дата: ${DateToString.convertDateToString(it)}" }
+            tvDate.text = calendar?.time?.let {
+                getString(R.string.date_rus_text) + DateToString.convertDateToString(it)
+            }
         }
     }
 
@@ -196,36 +205,40 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
     }
 
     private fun addNote() {
-        binding?.apply {
-            database?.noteDao()?.insert(
-                Note(
-                    null,
-                    etTitle.text.toString(),
-                    etDesc.text.toString(),
-                    calendar?.time,
-                    etLongitude.text.toString().toDouble(),
-                    etLatitude.text.toString().toDouble()
+        scope.launch {
+            binding?.apply {
+                database?.noteDao()?.insert(
+                    Note(
+                        null,
+                        etTitle.text.toString(),
+                        etDesc.text.toString(),
+                        calendar?.time,
+                        etLongitude.text.toString().toDouble(),
+                        etLatitude.text.toString().toDouble()
+                    )
                 )
-            )
+            }
         }
         showMessage("Задача сохранена")
         returnToNoteListFragment()
     }
 
     private fun updateNote(id: Int) {
-        val note = database?.noteDao()?.findById(id)
-        binding?.apply {
-            if (isNoteCorrect()) {
-                binding?.run {
-                    note?.let { note ->
-                        note.title = etTitle.text.toString()
-                        note.description = etDesc.text.toString()
-                        calendar?.also {
-                            note.date = it.time
+        scope.launch {
+            val note = database?.noteDao()?.findById(id)
+            binding?.apply {
+                if (isNoteCorrect()) {
+                    binding?.run {
+                        note?.let { note ->
+                            note.title = etTitle.text.toString()
+                            note.description = etDesc.text.toString()
+                            calendar?.also {
+                                note.date = it.time
+                            }
+                            database?.noteDao()?.update(note)
+                            showMessage("Задача обновлена")
+                            returnToNoteListFragment()
                         }
-                        database?.noteDao()?.update(note)
-                        showMessage("Задача обновлена")
-                        returnToNoteListFragment()
                     }
                 }
             }
@@ -266,7 +279,7 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
         super.onDestroy()
         binding = null
         database = null
-
+        scope.cancel()
     }
 
     companion object {

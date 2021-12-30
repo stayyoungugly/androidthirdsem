@@ -11,12 +11,18 @@ import com.example.androidsemthree.database.AppDatabase
 import com.example.androidsemthree.databinding.FragmentNoteListBinding
 import com.example.androidsemthree.models.Note
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 class NoteListFragment : Fragment(R.layout.fragment_note_list) {
     private var binding: FragmentNoteListBinding? = null
     private var database: AppDatabase? = null
     private var noteAdapter: NoteAdapter? = null
     private var notes: List<Note>? = null
+
+    private val scope = CoroutineScope(Dispatchers.Main)
 
     override fun onViewCreated(
         view: View,
@@ -52,19 +58,25 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
     }
 
     private fun deleteAllNotes() {
-        database?.noteDao()?.deleteAllNotes()
+        scope.launch {
+            database?.noteDao()?.deleteAllNotes()
+        }
         updateNotes()
         showMessage("Задачи удалены")
     }
 
     private fun deleteNote(id: Int) {
-        database?.noteDao()?.deleteNoteById(id)
+        scope.launch {
+            database?.noteDao()?.deleteNoteById(id)
+        }
         updateNotes()
         showMessage("Задача удалена")
     }
 
     private fun updateNotes() {
-        notes = database?.noteDao()?.getAll()
+        scope.launch {
+            notes = database?.noteDao()?.getAll()
+        }
         binding?.apply {
             if (notes.isNullOrEmpty()) {
                 rvNotes.visibility = View.GONE
@@ -103,5 +115,6 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
         binding = null
         database = null
         noteAdapter = null
+        scope.cancel()
     }
 }

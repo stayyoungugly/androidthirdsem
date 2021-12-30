@@ -9,7 +9,7 @@ import com.example.androidsemthree.database.dao.NoteDao
 import com.example.androidsemthree.models.DateConvert
 import com.example.androidsemthree.models.Note
 
-@Database(entities = [Note::class], version = 1)
+@Database(entities = [Note::class], version = 2, exportSchema = true)
 @TypeConverters(DateConvert::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -33,7 +33,6 @@ abstract class AppDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
-                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build()
     }
