@@ -72,9 +72,9 @@ class NoteListFragment : Fragment(R.layout.fragment_note_list) {
             } else {
                 rvNotes.visibility = View.VISIBLE
                 noNotesAdded.visibility = View.GONE
+                noteAdapter?.submitList(ArrayList(notes))
             }
         }
-        noteAdapter?.submitList(ArrayList(notes))
     }
 
     private fun showNoteFragment(id: Int?) {
