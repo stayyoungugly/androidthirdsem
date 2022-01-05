@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/noteListFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.androidsemthree.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.example.androidsemthree.fragments.NoteListFragment"
+        android:label="NoteListFragment">
+        <action
+            android:id="@+id/action_noteListFragment_to_noteDetailsFragment"
+            app:destination="@id/noteDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailsFragment"
+        android:name="com.example.androidsemthree.fragments.NoteDetailsFragment"
+        android:label="NoteDetailsFragment">
+        <action
+            android:id="@+id/action_noteDetailsFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
+    </fragment>
 
 </navigation>
