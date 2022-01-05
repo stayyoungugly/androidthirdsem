@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.12434210526315789" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" value="0.12434210526315789" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/drawable/ic_baseline_done_all_24.xml" value="0.12434210526315789" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/activity_main.xml" value="0.16052631578947368" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/fragment_note_details.xml" value="0.11414473684210526" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/fragment_note_list.xml" value="0.11414473684210526" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/layout/note_item.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/menu/menu_main.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/AndroidSemThree/app/src/main/res/menu/menu_note.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
