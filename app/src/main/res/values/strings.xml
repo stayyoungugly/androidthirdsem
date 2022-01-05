@@ -12,4 +12,6 @@
     <string name="latitude">Широта (необязательно)</string>
     <string name="date_is_not_picked_rus">Дата не выбрана</string>
     <string name="data_text_rus">Дата:</string>
+    <string name="edit_note_rus">Редактировать задачу</string>
+    <string name="add_note_rus">Добавить задачу</string>
 </resources>
