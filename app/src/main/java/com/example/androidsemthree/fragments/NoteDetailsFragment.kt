@@ -149,6 +149,10 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
         arguments?.getInt("ARG_NOTE_ID")?.let {
             currentNoteId = it
             setNoteEditingView(it)
+            binding?.toolBar?.title = getString(R.string.edit_note_rus)
+        }
+        if (arguments?.getInt("ARG_NOTE_ID") == null) {
+            binding?.toolBar?.title = getString(R.string.add_note_rus)
         }
     }
 
@@ -201,7 +205,6 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
                 updateNote(it)
             }
         }
-        returnToNoteListFragment()
     }
 
     private fun addNote() {
@@ -243,7 +246,6 @@ class NoteDetailsFragment : Fragment(R.layout.fragment_note_details) {
                 }
             }
         }
-        returnToNoteListFragment()
     }
 
     private fun isNoteCorrect(): Boolean {
